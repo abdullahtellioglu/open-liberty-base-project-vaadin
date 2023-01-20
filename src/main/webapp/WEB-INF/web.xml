@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+	<display-name>Portal</display-name>
+	<context-param>
+	  	<param-name>heartbeatInterval</param-name>
+  		<param-value>180</param-value>
+	</context-param>
+	<context-param>
+		<param-name>resourceCacheTime</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- This listener allows us to define session scoped beans -->
+
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+        <servlet>
+            <servlet-name>Portal</servlet-name>
+            <servlet-class>com.vaadin.flow.server.VaadinServlet</servlet-class>
+            <load-on-startup>1</load-on-startup>
+            <async-supported>true</async-supported>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>Portal</servlet-name>
+            <url-pattern>/app/*</url-pattern>
+        </servlet-mapping>
+
+    
+	
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>
